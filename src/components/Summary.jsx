@@ -1,6 +1,6 @@
 import Button from './Button';
 import Result from './Result';
-import QuizDb from '../QuizDb';
+import  dataQuiz from "../QuizDb.json"
 
 const Summary = ({ result, countedResult, correctAnswer, resetQuiz }) => {
 	return (
@@ -17,7 +17,7 @@ const Summary = ({ result, countedResult, correctAnswer, resetQuiz }) => {
 						<span style={{ color: parseInt(result) >= 80 ? 'green' : 'red' }}>
 							{result}
 						</span>
-						({correctAnswer} z {QuizDb.length} poprawnych odpowiedzi)
+						({correctAnswer} z {dataQuiz.length} poprawnych odpowiedzi)
 					</p>
 				</>
 			</>
@@ -25,7 +25,7 @@ const Summary = ({ result, countedResult, correctAnswer, resetQuiz }) => {
 				return (
 					<Result
 						numberOfQuestion={index + 1}
-						question={QuizDb[index].text}
+						question={dataQuiz[index].text}
 						answer={text}
 						isCorrect={isCorrect}
 						key={index}

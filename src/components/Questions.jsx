@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Button from './Button';
 import Summary from './Summary';
-import QuizDb from '../QuizDb';
+import  dataQuiz from "../QuizDb.json"
+
 
 const Questions = ({ className, resetQuiz }) => {
 	const [questionNumber, setQuestionNumber] = useState(0);
@@ -16,10 +17,10 @@ const Questions = ({ className, resetQuiz }) => {
 		setCountResult((prev) => [...prev, { text, isCorrect }]);
 	};
 
-	if (questionNumber >= QuizDb.length) {
+	if (questionNumber >= dataQuiz.length) {
 		return (
 			<Summary
-				result={`${(correctAnswer / QuizDb.length) * 100}%`}
+				result={`${(correctAnswer / dataQuiz.length) * 100}%`}
 				countedResult={countResult}
 				correctAnswer={correctAnswer}
 				resetQuiz={resetQuiz}
@@ -30,9 +31,9 @@ const Questions = ({ className, resetQuiz }) => {
 	return (
 		<div className={className}>
 			<p>
-				{questionNumber + 1}. {QuizDb[questionNumber].text}
+				{questionNumber + 1}. {dataQuiz[questionNumber].text}
 			</p>
-			{QuizDb[questionNumber].answers.map(({ text, isCorrect }, index) => {
+			{dataQuiz[questionNumber].answers.map(({ text, isCorrect }, index) => {
 				return (
 					<Button
 						content={text}
